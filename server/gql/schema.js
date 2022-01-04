@@ -10,9 +10,20 @@ const typeDefs = gql`
     createdAt: String
   }
 
+  input userInput {
+    name: String!
+    username: String!
+    email: String!
+    password: String!
+  }
+
   type Query {
     # User
     getUser: User
+  }
+
+  type Mutation {
+    register(input: userInput): User
   }
 `
 
