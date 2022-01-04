@@ -5,6 +5,18 @@ const typeDefs = require('./gql/schema');
 const resolvers = require('./gql/resolvers');
 require('dotenv').config({ path: ".env" });
 
+mongoose.connect(process.env.MONGO_DB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}, (err, _) => {
+  if(err){
+    console.log('connection error')
+    console.log(err)
+  } else {
+    server();
+  }
+})
+
 const server = async () => {
   const app = express();
   const serverApollo = new ApolloServer({
@@ -20,5 +32,3 @@ const server = async () => {
     console.log(`server running at http://localhost:4000/graphql`)
   })
 }
-
-server();
