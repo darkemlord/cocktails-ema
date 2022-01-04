@@ -32,3 +32,5 @@ const server = async () => {
     console.log(`server running at http://localhost:4000/graphql`)
   })
 }
+
+console.log('ema')
