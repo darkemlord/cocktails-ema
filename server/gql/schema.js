@@ -9,6 +9,11 @@ const typeDefs = gql`
     password: String
     createdAt: String
   }
+
+  type Query {
+    # User
+    getUser: User
+  }
 `
 
 module.exports = typeDefs;
