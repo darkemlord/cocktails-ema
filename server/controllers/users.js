@@ -2,7 +2,16 @@ const User = require('../models/user');
 const bcryptjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
-
+const createToken = (user, SECRET_KEY, expiresIn) => {
+  const {id, email, username, name} = user
+  const payload = {
+    id,
+    name,
+    email,
+    username
+  }
+  return jwt.sign(payload, SECRET_KEY, { expiresIn });
+};
 const register = async (input) => {
   const newUser = input;
   newUser.email = newUser.email.toLowerCase();
