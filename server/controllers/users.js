@@ -22,7 +22,8 @@ const register = async (input) => {
   try{
     const user = new User(newUser);
     user.save();
-    console.log('user saved')
+    console.log('user saved');
+    return user;
   } catch(error) {
     console.log(error)
   }
