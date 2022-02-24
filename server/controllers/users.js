@@ -1,4 +1,5 @@
 const User = require('../models/user');
+const bcryptjs = require('bcryptjs');
 
 const register = async (input) => {
   const newUser = input;
@@ -15,6 +16,16 @@ const register = async (input) => {
 
   //encrypt password
 
+  const salt = bcryptjs.genSaltSync(10);
+  newUser.password = await bcryptjs.hash(password, salt);
+
+  try{
+    const user = new User(newUser);
+    user.save();
+    console.log('user saved')
+  } catch(error) {
+    console.log(error)
+  }
 }
 
 
