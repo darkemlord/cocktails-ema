@@ -6,7 +6,8 @@ const resolvers = {
   },
   Mutation:{
     register: (_, { input }) =>{
-      console.log('mutation done')
+      console.log('returning taste')
+      return input
     }
   }
 }
