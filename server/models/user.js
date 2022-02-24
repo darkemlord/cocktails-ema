@@ -8,7 +8,9 @@ const userSchema = Schema( {
   },
   username: {
     type: String,
-    require: true
+    require: true,
+    trim: true,
+    unique: true
   },
   email: {
     type: String,
@@ -19,6 +21,10 @@ const userSchema = Schema( {
   password: {
     type: String,
     require: true,
+    trim: true
+  },
+  avatar: {
+    type: String,
     trim: true
   },
   createdAt: {
