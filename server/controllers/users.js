@@ -12,6 +12,11 @@ const createToken = (user, SECRET_KEY, expiresIn) => {
   }
   return jwt.sign(payload, SECRET_KEY, { expiresIn });
 };
+
+const login = async (input) => {
+
+}
+
 const register = async (input) => {
   const newUser = input;
   newUser.email = newUser.email.toLowerCase();
@@ -43,5 +48,5 @@ const register = async (input) => {
 
 
 module.exports = {
-  register
+  register, login
 };
