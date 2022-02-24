@@ -14,7 +14,14 @@ const createToken = (user, SECRET_KEY, expiresIn) => {
 };
 
 const login = async (input) => {
-
+  const { email, password } = input
+  const userFound = await User.findOne({ email: email.toLowerCase()});
+  if(!userFound) throw Error('email or password error');
+  const passwordSucces = await bcryptjs.compare(password, userFound.password);
+  if(!passwordSucces) throw Error('Email or password error');
+  return {
+    token: createToken(userFound, process.env.SECRET_KEY, '24h')
+  }
 }
 
 const register = async (input) => {
